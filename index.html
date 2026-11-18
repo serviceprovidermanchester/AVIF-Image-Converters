@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1223">
+  <meta name="author" content="Sayed Mudassar Akbar — SPManchester Private Limited">
+  <meta name="description" content="SPManchester AVIF Suite — Enterprise-grade, 100% in-browser, privacy-first image conversion suite by SPManchester Private Limited. Convert AVIF to PNG, JPG, WebP, PDF, SVG, ICO, BMP, and Base64.">
+  <meta name="keywords" content="AVIF converter, AVIF to PNG, AVIF to JPG, AVIF to WebP, AVIF to PDF, SPManchester, Sayed Mudassar Akbar, image optimization, private converter">
+  <title>SPManchester AVIF Suite — Privacy-First Image Conversion</title>
+  <link rel="icon" href="./avif-to-png/favicon.svg" type="image/svg+xml">
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;background:#0b1223;color:#ecf2ff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .ambient{position:absolute;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(120px);opacity:.28}
+    .ambient-a{width:540px;height:540px;top:-220px;left:calc(50% - 520px);background:#3b66ff}
+    .ambient-b{width:460px;height:460px;top:220px;right:-140px;background:#6f32e6;opacity:.22}
+    .wrap{width:min(1200px,calc(100% - 44px));margin-inline:auto}
+    .nav{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid rgba(255,255,255,0.08)}
+    .logo{display:flex;align-items:center;font-size:22px;font-weight:800;letter-spacing:-.8px}
+    .logo>span:not(.logo-square):not(.tool-label){color:#8da2fb}
+    .logo-square{background:#4f6bfb;color:#fff;border-radius:10px;width:36px;height:36px;display:inline-grid;place-items:center;margin-right:11px;box-shadow:0 6px 25px rgba(79,107,251,0.35);font-size:22px}
+    .tool-label{font-weight:500;font-size:13px;color:#7084a8;letter-spacing:0;margin-left:14px;padding-left:14px;border-left:1px solid #354668}
+    .nav-links{display:flex;align-items:center;gap:22px;font-size:13px;color:#a7b8d8}
+    .nav-chip{color:#8affc1;border:1px solid #236c54;background:#112a21;padding:8px 15px;border-radius:100px;font-size:12px;font-weight:600}
+    .live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#38e59d;margin-right:6px;box-shadow:0 0 0 3px rgba(56,229,157,0.2)}
+    .brand-link{color:#b9c8e8;transition:color .15s}
+    .brand-link:hover{color:#fff}
+    
+    .hero{text-align:center;padding:75px 0 45px}
+    .company-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(79,107,251,0.12);border:1px solid rgba(99,128,255,0.3);padding:6px 16px;border-radius:100px;font-size:11px;font-weight:700;color:#c2d0ff;letter-spacing:1.8px;margin-bottom:18px}
+    .eyebrow-sep{padding:0 6px;color:#50658e}
+    h1{font-size:clamp(38px,5.8vw,68px);letter-spacing:-2.5px;font-weight:850;line-height:1.18;margin:10px auto 18px;max-width:920px}
+    .gradient-word{background:linear-gradient(110deg,#ffffff 10%,#8da2fb 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-sub{color:#9fb2d3;max-width:680px;margin:0 auto;font-size:16px;line-height:1.75}
+    .trust-strip{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;font-size:13px;color:#b6c6e3;margin-top:28px}
+    .trust-strip span::first-letter{color:#8ea4fc}
+    
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:22px;margin:42px 0 70px}
+    .card{background:linear-gradient(150deg,#142038 0%,#101a2f 100%);border:1px solid #283755;border-radius:18px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s,border-color .2s,box-shadow .2s;box-shadow:0 15px 45px rgba(2,8,25,0.35)}
+    .card:hover{transform:translateY(-4px);border-color:#5c73d9;box-shadow:0 22px 55px rgba(65,99,255,0.2)}
+    .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .badge-avif{background:#2a3a7f;color:#d5e0ff;border:1px solid #4a5da8;font-size:11px;font-weight:700;padding:5px 10px;border-radius:7px}
+    .arrow-icon{color:#768dff;font-size:16px;font-weight:bold}
+    .badge-target{background:#135c55;color:#cdfaec;border:1px solid #238576;font-size:11px;font-weight:700;padding:5px 10px;border-radius:7px}
+    .card-title{font-size:21px;font-weight:750;margin:0 0 8px;letter-spacing:-.4px}
+    .card-desc{font-size:13px;color:#8f9fb8;line-height:1.65;margin:0 0 22px;flex-grow:1}
+    .card-actions{display:flex;gap:10px}
+    .btn-launch{flex:1;background:linear-gradient(120deg,#5370ff,#7955f8);color:white;font-weight:700;font-size:13px;padding:12px 14px;border-radius:10px;text-align:center;box-shadow:0 7px 20px rgba(83,112,255,0.28);transition:opacity .15s}
+    .btn-launch:hover{opacity:.93}
+    .btn-zip{background:#192742;border:1px solid #36486c;color:#cbd9f3;font-size:12px;font-weight:600;padding:12px 14px;border-radius:10px;display:inline-flex;align-items:center;gap:5px;transition:background .15s}
+    .btn-zip:hover{background:#25375c;color:#fff}
+
+    .features-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;border-top:1px solid #243350;padding-top:42px;margin-bottom:60px}
+    .feature-item h3{font-size:16px;margin:0 0 8px;color:#d4e1fb}
+    .feature-item p{font-size:13.5px;color:#8497b7;line-height:1.65;margin:0}
+    .feature-item .f-icon{color:#8499ff;font-size:20px;margin-bottom:8px;display:inline-block}
+
+    .company-banner{background:linear-gradient(135deg,#121b31 0%,#162343 100%);border:1px solid #2c3f68;border-radius:16px;padding:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:60px;flex-wrap:wrap}
+    .company-info h3{margin:0 0 6px;font-size:18px;color:#e8eeff}
+    .company-info p{margin:0;font-size:13.5px;color:#94a8cb;max-width:620px;line-height:1.6}
+    .company-btn{background:#4f6bfb;color:#fff;font-weight:700;font-size:13px;padding:12px 22px;border-radius:10px;display:inline-flex;align-items:center;gap:6px;transition:background .15s}
+    .company-btn:hover{background:#3d59e8}
+
+    .footer{border-top:1px solid #1f2b45;min-height:95px;display:flex;align-items:center;justify-content:space-between;gap:15px;color:#7a8ca8;font-size:12.5px;padding:28px 0}
+    .footer-left{display:flex;align-items:center;gap:12px}
+    .footer a{color:#a9bddf;transition:color .15s}
+    .footer a:hover{color:#fff;text-decoration:underline}
+
+    @media(max-width:768px){
+      .features-strip{grid-template-columns:1fr;gap:24px}
+      .company-banner{flex-direction:column;align-items:flex-start}
+      .nav-chip{display:none}
+      .footer{flex-direction:column;text-align:center;gap:12px}
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <header class="nav wrap">
+    <a href="./" class="logo" aria-label="SPManchester Home">
+      <span class="logo-square" aria-hidden="true">✦</span>
+      SPM<span>anchester</span>
+      <span class="tool-label">AVIF Suite</span>
+    </a>
+    <div class="nav-links">
+      <span class="nav-chip"><span class="live-dot"></span> 100% In-Browser &amp; Private</span>
+      <a href="https://www.spmanchester.com" class="brand-link" target="_blank" rel="noopener">SPManchester.com ↗</a>
+      <a href="mailto:info@spmanchester.com" class="brand-link">Support</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="company-pill">
+        <span>SPMANCHESTER PRIVATE LIMITED</span>
+        <span class="eyebrow-sep">·</span>
+        <span>OPEN SOURCE INITIATIVE</span>
+      </div>
+      <h1>Convert <span class="gradient-word">AVIF Images</span> Fast, Free &amp; 100% Privately.</h1>
+      <p class="hero-sub">Architected and maintained by <strong>SPManchester Private Limited</strong> (Author: <strong>Sayed Mudassar Akbar</strong>). Pure client-side processing — zero server uploads, zero API limits, and enterprise-grade performance.</p>
+      <div class="trust-strip">
+        <span>✦ 100% Free &amp; Open Source</span>
+        <span>◈ Zero Server Uploads (GDPR Safe)</span>
+        <span>⚡ Multi-Threaded Batch Conversion</span>
+        <span>✓ No Account or API Key Required</span>
+      </div>
+    </section>
+
+    <div class="grid">
+      <!-- AVIF to PNG -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <span class="badge-avif">AVIF</span>
+            <span class="arrow-icon">→</span>
+            <span class="badge-target">PNG</span>
+          </div>
+          <h2 class="card-title">AVIF to PNG</h2>
+          <p class="card-desc">Lossless transparency and pristine raster quality. Perfect for UI assets, design systems, and web icons.</p>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch" href="./avif-to-png/">Launch Tool ↗</a>
+          <a class="btn-zip" href="./zips/avif-to-png.zip" title="Download standalone package">ZIP ⭳</a>
+        </div>
+      </div>
+
+      <!-- AVIF to JPG -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <span class="badge-avif">AVIF</span>
+            <span class="arrow-icon">→</span>
+            <span class="badge-target">JPG</span>
+          </div>
+          <h2 class="card-title">AVIF to JPG</h2>
+          <p class="card-desc">Universal compatibility across all browsers, CMS platforms, and operating systems with precision quality controls.</p>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch" href="./avif-to-jpg/">Launch Tool ↗</a>
+          <a class="btn-zip" href="./zips/avif-to-jpg.zip" title="Download standalone package">ZIP ⭳</a>
+        </div>
+      </div>
+
+      <!-- AVIF to WebP -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <span class="badge-avif">AVIF</span>
+            <span class="arrow-icon">→</span>
+            <span class="badge-target">WEBP</span>
+          </div>
+          <h2 class="card-title">AVIF to WebP</h2>
+          <p class="card-desc">Modern lightweight format widely adopted by Google and major CDNs with outstanding compression ratios.</p>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch" href="./avif-to-webp/">Launch Tool ↗</a>
+          <a class="btn-zip" href="./zips/avif-to-webp.zip" title="Download standalone package">ZIP ⭳</a>
+        </div>
+      </div>
+
+      <!-- AVIF to PDF -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <span class="badge-avif">AVIF</span>
+            <span class="arrow-icon">→</span>
+            <span class="badge-target">PDF</span>
+          </div>
+          <h2 class="card-title">AVIF to PDF</h2>
+          <p class="card-desc">Generate print-ready single or multi-page PDF documents from high-resolution AVIF image collections.</p>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch" href="./avif-to-pdf/">Launch Tool ↗</a>
+          <a class="btn-zip" href="./zips/avif-to-pdf.zip" title="Download standalone package">ZIP ⭳</a>
+        </div>
+      </div>
+
+      <!-- AVIF to SVG -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <span class="badge-avif">AVIF</span>
+            <span class="arrow-icon">→</span>
+            <span class="badge-target">SVG</span>
+          </div>
+          <h2 class="card-title">AVIF to SVG</h2>
+          <p class="card-desc">Wrap high-fidelity raster graphics inside clean, responsive Scalable Vector Graphics XML structures.</p>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch" href="./avif-to-svg/">Launch Tool ↗</a>
+          <a class="btn-zip" href="./zips/avif-to-svg.zip" title="Download standalone package">ZIP ⭳</a>
+        </div>
+      </div>
+
+      <!-- AVIF to ICO -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <span class="badge-avif">AVIF</span>
+            <span class="arrow-icon">→</span>
+            <span class="badge-target">ICO</span>
+          </div>
+          <h2 class="card-title">AVIF to ICO</h2>
+          <p class="card-desc">Convert modern AVIF graphics into ICO favicon packages and Windows application icons with multi-size presets.</p>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch" href="./avif-to-ico/">Launch Tool ↗</a>
+          <a class="btn-zip" href="./zips/avif-to-ico.zip" title="Download standalone package">ZIP ⭳</a>
+        </div>
+      </div>
+
+      <!-- AVIF to BMP -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <span class="badge-avif">AVIF</span>
+            <span class="arrow-icon">→</span>
+            <span class="badge-target">BMP</span>
+          </div>
+          <h2 class="card-title">AVIF to BMP</h2>
+          <p class="card-desc">Direct export into uncompressed 24-bit Windows Bitmap format for industrial software and legacy hardware.</p>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch" href="./avif-to-bmp/">Launch Tool ↗</a>
+          <a class="btn-zip" href="./zips/avif-to-bmp.zip" title="Download standalone package">ZIP ⭳</a>
+        </div>
+      </div>
+
+      <!-- AVIF to Base64 -->
+      <div class="card">
+        <div>
+          <div class="card-top">
+            <span class="badge-avif">AVIF</span>
+            <span class="arrow-icon">→</span>
+            <span class="badge-target">BASE64</span>
+          </div>
+          <h2 class="card-title">AVIF to Base64</h2>
+          <p class="card-desc">Transform AVIF assets directly into Data URI strings, CSS background variables, and HTML &lt;img&gt; inline snippets.</p>
+        </div>
+        <div class="card-actions">
+          <a class="btn-launch" href="./avif-to-base64/">Launch Tool ↗</a>
+          <a class="btn-zip" href="./zips/avif-to-base64.zip" title="Download standalone package">ZIP ⭳</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPManchester Company Showcase -->
+    <section class="company-banner">
+      <div class="company-info">
+        <h3>Built with ❤️ by SPManchester Private Limited</h3>
+        <p>SPManchester Private Limited delivers enterprise software development, modern web architectures, cloud infrastructure, and custom AI solutions. Need dedicated software engineering or custom internal tooling?</p>
+      </div>
+      <a class="company-btn" href="https://www.spmanchester.com" target="_blank" rel="noopener">
+        Visit SPManchester.com ↗
+      </a>
+    </section>
+
+    <!-- Technical Highlights -->
+    <section class="features-strip">
+      <div class="feature-item">
+        <span class="f-icon">🔒</span>
+        <h3>Zero Data Exfiltration</h3>
+        <p>All operations occur via Canvas 2D and Web APIs in local memory. Sensitive photos and assets never travel across public networks.</p>
+      </div>
+      <div class="feature-item">
+        <span class="f-icon">⚡</span>
+        <h3>High Throughput Batching</h3>
+        <p>Engineered for high-volume conversion workflows. Drag &amp; drop hundreds of megabytes, resize on the fly, and export a consolidated ZIP file.</p>
+      </div>
+      <div class="feature-item">
+        <span class="f-icon">📦</span>
+        <h3>Portable &amp; Self-Hostable</h3>
+        <p>100% dependency-free vanilla code. Easily self-host on Docker, Nginx, Cloudflare Pages, AWS S3, or GitHub Pages in seconds.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <div class="logo">
+          <span class="logo-square" aria-hidden="true">✦</span>
+          SPM<span>anchester</span>
+        </div>
+        <span>· Enterprise Open Source</span>
+      </div>
+      <div>
+        © 2026 <a href="https://www.spmanchester.com" target="_blank" rel="noopener">SPManchester Private Limited</a> · Author: <strong>Sayed Mudassar Akbar</strong> · Support: <a href="mailto:info@spmanchester.com">info@spmanchester.com</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

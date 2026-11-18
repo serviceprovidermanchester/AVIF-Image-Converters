@@ -1,0 +1,44 @@
+# AVIF to BMP: GitHub and LinkedIn publishing kit
+
+## Repository name
+
+`avif-to-bmp`
+
+## GitHub description
+
+Free AVIF to BMP image converter — private in-browser processing, batch uploads, resize and downloadable results. No backend.
+
+## GitHub topics
+
+`image-converter`, `image-tools`, `javascript`, `github-pages`, `browser-based`, `privacy-first`, `avif-to-bmp`
+
+## SEO meta description
+
+Free AVIF to BMP converter. Upload or drag multiple images, resize with preserved proportions, preview, convert privately in your browser and download files or a ZIP.
+
+## Ready-to-edit LinkedIn post
+
+🚀 Introducing **AVIF to BMP Converter — PixelForge**
+
+Export AVIF imagery as a BMP file when a receiving app prefers that format.
+
+✅ Fully browser-based conversion — no image upload required by the app
+✅ Drag & drop, multi-file queue and instant image previews
+✅ Resize presets, individual downloads and batch ZIP export
+✅ Mobile-friendly interface and no server or API key
+
+Typical workflow: adapt modern photos for content management or graphics editing.
+
+Built with HTML, CSS and vanilla JavaScript. Open source under MIT.
+
+Live demo: https://YOUR-USERNAME.github.io/avif-to-bmp/
+GitHub: https://github.com/YOUR-USERNAME/avif-to-bmp
+
+#ImageConverter #AVIF #BMP #WebDevelopment #OpenSource #GitHubPages
+
+## How to publish
+
+1. Upload this project to GitHub.
+2. Enable Pages in Settings → Pages.
+3. Replace placeholder links with the exact GitHub and live Pages URLs.
+4. Publish the LinkedIn text using real screenshots and real, tested claims.

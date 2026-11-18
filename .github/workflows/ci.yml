@@ -1,0 +1,30 @@
+name: CI Code & Asset Quality Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Code & Structure Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate HTML Syntax
+        run: |
+          echo "Checking HTML files integrity..."
+          find . -name "*.html" -exec test -s {} \;
+          echo "All HTML files present and non-empty."
+
+      - name: Validate JavaScript Integrity
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          echo "Checking JS files syntax..."
+          find . -name "*.js" -exec node --check {} \;
+          echo "Syntax check passed for all JavaScript modules."

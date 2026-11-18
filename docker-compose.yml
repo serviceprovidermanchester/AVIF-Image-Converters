@@ -1,0 +1,23 @@
+# ==============================================================================
+# SPManchester AVIF Suite — Docker Compose Service
+# SPManchester Private Limited (www.spmanchester.com)
+# ==============================================================================
+
+version: '3.8'
+
+services:
+  avif-suite:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spmanchester/avif-converter-suite:latest
+    container_name: spmanchester-avif-suite
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+    labels:
+      - "com.spmanchester.vendor=SPManchester Private Limited"
+      - "com.spmanchester.author=Sayed Mudassar Akbar"
+      - "com.spmanchester.website=https://www.spmanchester.com"
